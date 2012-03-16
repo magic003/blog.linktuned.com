@@ -1,0 +1,55 @@
+---
+layout: default
+title: Linktuned Blog
+---
+
+{% for post in paginator.posts %}
+  <article class="post">
+    <header>
+      <h1>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+      </h1>
+    </header>
+    <div class="date">
+      <time pubdate="{{ post.date }}">{{ post.date | date_to_string }}</time>
+    </div>
+    <section>
+      <div class="post_content">
+        {{ post.content }}
+      </div>
+    </section>
+    <div class="comments_link">
+      <a href="{{ post.url }}#disqus_thread">Comments</a>
+    </div>
+  </article>
+{% endfor %}
+
+<div>
+  <span class="previous">
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+      <a href="/index.html" title="Previous Page">&laquo; Previous</a>
+      {% else %}
+      <a href="/page{{ paginator.previous_page }}/" title="Previous Page">&laquo; Previous</a>
+      {% endif %}
+    {% endif %}
+  </span>
+  <span class="next">
+    {% if paginator.next_page %}
+      <a href="/page{{ paginator.next_page }}/" title="Next Page">Next &raquo;</a>
+    {% endif %}
+  </span>
+</div>
+
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'linktunedblog'; // required: replace example with your forum shortname
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>
