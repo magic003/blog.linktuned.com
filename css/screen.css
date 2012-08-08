@@ -115,3 +115,8 @@ article.post {
     margin: 1em 0;
 }
 
+.post_content img {
+    box-shadow: 0 0 5px #DDDDDD;
+    margin: 0 30px;
+}
+
